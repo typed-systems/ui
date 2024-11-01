@@ -1,0 +1,46 @@
+# See https://help.github.com/articles/ignoring-files/ for more about ignoring files.
+
+# dependencies
+/node_modules
+/.pnp
+.pnp.js
+
+# testing
+/coverage
+/test-result
+
+# production
+/build
+/dist
+
+# misc
+.DS_Store
+.env*
+.idea/
+.vscode/
+.node-version
+
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+node_modules
+
+.eslintcache
+
+cypress.env.json
+cypress/videos
+cypress/screenshots
+cypress/downloads
+
+.volta
+.nyc_output/*
+
+# User specific .devcontainer environment files
+.devcontainer/devcontainer_backend_local.env
+.devcontainer/devcontainer_backend_remote_test.env
+
+# Yarn pre-migration stuff
+.pnp.*
+.yarn/*
+!.yarn/plugins
+!.yarn/releases
