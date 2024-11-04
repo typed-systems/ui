@@ -1,6 +1,6 @@
 import { RGBELoader } from "three-stdlib";
 import { memo } from "react";
-import { Canvas, useFrame, useLoader } from "@react-three/fiber";
+import { Canvas, useLoader } from "@react-three/fiber";
 import {
   Grid,
   Center,
@@ -12,7 +12,6 @@ import {
   MeshTransmissionMaterial,
   OrbitControls,
 } from "@react-three/drei";
-import { easing } from "maath";
 import { useControls } from "leva";
 import {
   EffectComposer,
@@ -116,7 +115,7 @@ export function App() {
   );
 }
 
-const Shadows = memo(({ shadow }: any) => (
+const Shadows = memo(({ shadow }: { shadow: string }) => (
   <AccumulativeShadows
     frames={100}
     color={shadow}
@@ -143,13 +142,10 @@ function Text({
   children,
   environment,
   config,
-  font = "/Inter_Medium_Regular.json",
+  font = "Geist Medium_Regular.json",
   ...props
 }: any) {
-  const texture = useLoader(
-    RGBELoader,
-    "https://dl.polyhaven.org/file/ph-assets/HDRIs/hdr/1k/fireplace_1k.hdr"
-  );
+  const texture = useLoader(RGBELoader, "./fireplace_1k.hdr");
   return (
     <>
       <group>
@@ -157,7 +153,7 @@ function Text({
           <Text3D
             castShadow
             bevelEnabled
-            font="Geist (Beta) Medium_Regular.json"
+            font={font}
             scale={5}
             letterSpacing={-0.03}
             height={height}
@@ -181,16 +177,16 @@ function Text({
         {lights && (
           <group {...props}>
             <Center
-              position={[0.1, 0.2, 0.75]}
+              position={[0.1, 0.1, 0.75]}
               scale={[0.925, 0.875, 1]}
               front
               top
             >
               <Text3D
                 bevelEnabled={true}
-                font="Geist (Beta) Thin_Regular.json"
+                font={font}
                 scale={5}
-                letterSpacing={0.1}
+                letterSpacing={0.02}
                 height={0.01}
                 bevelSize={0.01}
                 bevelSegments={1}
